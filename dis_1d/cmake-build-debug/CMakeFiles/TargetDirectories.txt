@@ -1,0 +1,3 @@
+/Users/dariaegorenkova/Desktop/Программирование/2 семестр/3 семинар/dis_1d/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/Users/dariaegorenkova/Desktop/Программирование/2 семестр/3 семинар/dis_1d/cmake-build-debug/CMakeFiles/edit_cache.dir
+/Users/dariaegorenkova/Desktop/Программирование/2 семестр/3 семинар/dis_1d/cmake-build-debug/CMakeFiles/dis_1d.dir
