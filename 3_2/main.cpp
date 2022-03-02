@@ -4,6 +4,7 @@
 
 const int n = 9;
 int array[n][n]{0};
+int periodic = 1; // if field periodic along the y-axis
 
 // random library
 std::random_device dev;
@@ -23,7 +24,8 @@ int print(int arr[n][n]){
 }
 
 int check(int x, int y, int c){
-    if ((x == 0) or (y == 0) or (x == n - 1) or (y == n - 1)){
+    if ((periodic == 0) and ((x == 0) or (y == 0) or (x == n - 1) or (y == n - 1)) or
+    ((periodic == 1) and ((x == 0) or (x == n - 1)))){
         return 2;
     } else{
         if ((array[x][y+1] == c) or (array[x+1][y] == c) or (array[x-1][y] == c) or (array[x][y-1] == c)){
@@ -137,34 +139,69 @@ void move(int &dis_val, int x, int y){
     int dir = dist(rng);
     int x_new = x;
     int y_new = y;
-    if (dir == 0) {
-        x_new = x + 1;}
-    if (dir == 1){
-        x_new = x - 1;}
-    if (dir == 2){
-        y_new = y + 1;}
-    if (dir == 3){
-        y_new = y - 1;}
-    if ((x_new == n-1) or (y_new == n-1) or (x_new == 0) or (y_new == 0) or
-        (check(x_new, y_new, 2) == 0)){
-        array[x_new][y_new] = 2;
-        dis_val--;
-        array[x][y] = 0;
-    } else { if (array[x_new][y_new] == 0){
-            array[x_new][y_new] = 3;
-            array[x][y] = 0;
-        } else { if (array[x_new][y_new] == 3){
+    int stay_p = 3; // possibility for a dislocation to stay put is 1/stay_p
+    std::uniform_int_distribution<int> dist_stay(0, stay_p-1);
+    int stay = dist_stay(rng);
+    if (stay != 0){
+        if (dir == 0) {
+            x_new = x + 1;}
+        if (dir == 1){
+            x_new = x - 1;}
+        if (dir == 2){
+            y_new = y + 1;}
+        if (dir == 3){
+            y_new = y - 1;}
+        if (periodic == 1) {
+            if ((x_new == n - 1) or (x_new == 0) or
+                (check(x_new, y_new, 2) == 0)) {
                 array[x_new][y_new] = 2;
-                array[x][y] = 2;
-                dis_val = dis_val - 2;
+                dis_val--;
+                array[x][y] = 0;
+            } else {
+                if (y_new == n) {
+                    y_new = 0;
+                }
+
+                if (y_new == -1) {
+                    y_new = n - 1;
+                }
+                if (array[x_new][y_new] == 0) {
+                    array[x_new][y_new] = 3;
+                    array[x][y] = 0;
+                } else {
+                    if (array[x_new][y_new] == 3) {
+                        array[x_new][y_new] = 2;
+                        array[x][y] = 2;
+                        dis_val = dis_val - 2;
+                    }
+                }
             }
-
         }
-
-
+        else{
+            if ((x_new == n-1) or (y_new == n-1) or (x_new == 0) or (y_new == 0) or
+                (check(x_new, y_new, 2) == 0)){
+                array[x_new][y_new] = 2;
+                dis_val--;
+                array[x][y] = 0;
+            } else {
+                if (array[x_new][y_new] == 0) {
+                    array[x_new][y_new] = 3;
+                    array[x][y] = 0;
+                } else {
+                    if (array[x_new][y_new] == 3) {
+                        array[x_new][y_new] = 2;
+                        array[x][y] = 2;
+                        dis_val = dis_val - 2;
+                    }
+                }
+            }
+        }
+    }
+    else{
+        array[x][y] = 3;
     }
 
-    //std::cout << x << y << ' '  << x_new << y_new <<  std::endl;
+    std::cout << x << y << ' '  << x_new << y_new <<  std::endl;
 }
 
 
@@ -173,9 +210,9 @@ void move(int &dis_val, int x, int y){
 
 int main() {
     int dis_val, average;
-    int rounds = 1000;
+    int rounds = 1;
 
-    for (int square = 1; square < 2; square = square + 1){
+    for (int square = 7; square < 8; square = square + 1){
         //std::cout << square << "= ";
         average = 0;
         for (int count = 0; count < rounds; count++){
@@ -184,7 +221,7 @@ int main() {
             int steps = 0;
             //print(array);
             check_before(dis_val);
-            //print(array);
+            print(array);
             //std::cout << dis_val << std::endl;
 
             while (dis_val > 0){
@@ -198,7 +235,7 @@ int main() {
                 check_after_move(dis_val, 3);
                 dis_val = change_value(array, 3, 1);
                 //if (steps < 10){
-                //print(array);
+                print(array);
                 //std::cout << dis_val << std::endl;
                 //}
                 //std::cout << dis_val << std::endl;

@@ -1,4 +1,4 @@
-# Install script for directory: /Users/dariaegorenkova/Desktop/Программирование/2 семестр/3 семинар/3_2
+# Install script for directory: /Users/dariaegorenkova/infa_2sem/3_2
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -45,5 +45,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/Users/dariaegorenkova/Desktop/Программирование/2 семестр/3 семинар/3_2/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/Users/dariaegorenkova/infa_2sem/3_2/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

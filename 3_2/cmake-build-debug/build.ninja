@@ -39,13 +39,13 @@ include CMakeFiles/rules.ninja
 #############################################
 # Logical path to working directory; prefix for absolute paths.
 
-cmake_ninja_workdir = /Users/dariaegorenkova/Desktop/Программирование/2$ семестр/3$ семинар/3_2/cmake-build-debug/
+cmake_ninja_workdir = /Users/dariaegorenkova/infa_2sem/3_2/cmake-build-debug/
 
 #############################################
 # Utility command for rebuild_cache
 
 build CMakeFiles/rebuild_cache.util: CUSTOM_COMMAND
-  COMMAND = cd "/Users/dariaegorenkova/Desktop/Программирование/2 семестр/3 семинар/3_2/cmake-build-debug" && /Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake --regenerate-during-build -S"/Users/dariaegorenkova/Desktop/Программирование/2 семестр/3 семинар/3_2" -B"/Users/dariaegorenkova/Desktop/Программирование/2 семестр/3 семинар/3_2/cmake-build-debug"
+  COMMAND = cd /Users/dariaegorenkova/infa_2sem/3_2/cmake-build-debug && /Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake --regenerate-during-build -S/Users/dariaegorenkova/infa_2sem/3_2 -B/Users/dariaegorenkova/infa_2sem/3_2/cmake-build-debug
   DESC = Running CMake to regenerate build system...
   pool = console
   restat = 1
@@ -57,7 +57,7 @@ build rebuild_cache: phony CMakeFiles/rebuild_cache.util
 # Utility command for edit_cache
 
 build CMakeFiles/edit_cache.util: CUSTOM_COMMAND
-  COMMAND = cd "/Users/dariaegorenkova/Desktop/Программирование/2 семестр/3 семинар/3_2/cmake-build-debug" && /Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
+  COMMAND = cd /Users/dariaegorenkova/infa_2sem/3_2/cmake-build-debug && /Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
   DESC = No interactive CMake dialog available...
   restat = 1
 
@@ -72,7 +72,7 @@ build edit_cache: phony CMakeFiles/edit_cache.util
 
 build cmake_object_order_depends_target_3_2: phony || CMakeFiles/3_2.dir
 
-build CMakeFiles/3_2.dir/main.cpp.o: CXX_COMPILER__3_2_Debug /Users/dariaegorenkova/Desktop/Программирование/2$ семестр/3$ семинар/3_2/main.cpp || cmake_object_order_depends_target_3_2
+build CMakeFiles/3_2.dir/main.cpp.o: CXX_COMPILER__3_2_Debug /Users/dariaegorenkova/infa_2sem/3_2/main.cpp || cmake_object_order_depends_target_3_2
   DEP_FILE = CMakeFiles/3_2.dir/main.cpp.o.d
   FLAGS = -g -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX11.3.sdk -mmacosx-version-min=11.1 -std=gnu++14
   OBJECT_DIR = CMakeFiles/3_2.dir
@@ -106,7 +106,7 @@ build 3_2: CXX_EXECUTABLE_LINKER__3_2_Debug CMakeFiles/3_2.dir/main.cpp.o
 # =============================================================================
 
 #############################################
-# Folder: /Users/dariaegorenkova/Desktop/Программирование/2 семестр/3 семинар/3_2/cmake-build-debug
+# Folder: /Users/dariaegorenkova/infa_2sem/3_2/cmake-build-debug
 
 build all: phony 3_2
 
